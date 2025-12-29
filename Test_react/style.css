@@ -1,0 +1,172 @@
+body {
+  font-family: poppins;
+  font-style: italic;
+  /* font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal; */
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f5f5f5;
+}
+
+.welcome {
+  position: fixed;
+  inset: 0;
+  background: #f5f5f5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-family: "Pacifico", cursive;
+  font-size: 4.5rem;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.action {
+  opacity: 0;
+  margin-top: 20px;
+  font-size: 2rem;
+  transition: opacity 0.6s ease;
+}
+
+.hello_text {
+  animation: appleColorShift 2s ease-in-out infinite;
+}
+
+@keyframes appleColorShift {
+  0% {
+    color: #007aff; /* iOS Blue */
+  }
+  25% {
+    color: #af52de; /* Apple Purple */
+  }
+  50% {
+    color: #ff2d55; /* Apple Pink */
+  }
+  75% {
+    color: #ff9f0a; /* Apple Orange */
+  }
+  100% {
+    color: #007aff; /* back to Blue */
+  }
+}
+
+/* LOGIN BOX AWALNYA HIDDEN */
+.box {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* FADE IN */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+  pointer-events: auto;
+}
+
+/* FADE OUT */
+.fade-out {
+  animation: fadeOut 1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  width: 300px;
+  height: auto;
+  padding: 5px 15px 25px 15px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: beige;
+  transition: 0.2s ease;
+  text-align: center;
+}
+
+.box:hover {
+  transform: scale(1.025, 1.025);
+  transition: 0.2s ease;
+}
+
+.input_form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 90%;
+  height: auto;
+  margin-top: 20px;
+
+  opacity: 0;
+  animation: fadeIn2 1s ease forwards;
+}
+
+.input_box {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.btn {
+  /* margin-top: 30px; */
+  width: 90%;
+  height: 30px;
+  margin-top: 30px;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  cursor: pointer;
+
+  opacity: 0;
+  animation: fadeIn2 1s ease forwards;
+  transition: 0.4s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05, 1.05);
+  transition: 0.4s ease;
+}

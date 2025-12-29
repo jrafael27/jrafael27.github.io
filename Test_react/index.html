@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="welcome" class="welcome"></div>
+
+    <div id="app" class="box"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const appNode = document.getElementById('app');
+        const welcomeNode = document.getElementById('welcome');
+
+        const appRoot = ReactDOM.createRoot(appNode);
+        const welcomeRoot = ReactDOM.createRoot(welcomeNode);
+
+        function showAlert() {
+            window.alert("Hello");
+        }
+
+        welcomeRoot.render(
+            <>
+                <h1 className="hello_text">Hello</h1>
+                <h2 className="action">Click Anywhere to Continue</h2>
+            </>
+        );
+
+        appRoot.render(
+            <>
+                <h2>Welcome <br />Please Login</h2>
+                <div className="input_form">
+                    <label>Username</label>
+                    <input type="text" className="input_box" />
+                </div>
+                <div className="input_form">
+                    <label>Password</label>
+                    <input type="password" className="input_box" />
+                </div>
+                <button className="btn" onClick={showAlert}>Login</button>
+            </>
+        );
+
+        // fade-in welcome
+        setTimeout(() => {
+            welcomeNode.classList.add("fade-in");
+        }, 50);
+
+        // 🔥 tampilkan teks setelah 5 detik
+        setTimeout(() => {
+        const actionText = welcomeNode.querySelector(".action");
+
+            if (actionText) {
+                setTimeout(() => {
+                    actionText.classList.add("fade-in");
+                }, 3000);
+            }
+        }, 0);
+
+        let clicked = false;
+        welcomeNode.addEventListener("click", () => {
+            if (clicked) return;
+            clicked = true;
+
+            welcomeNode.classList.remove("fade-in");
+            welcomeNode.classList.add("fade-out");
+
+            setTimeout(() => {
+                welcomeNode.style.display = "none";
+                appNode.classList.add("fade-in");
+            }, 600);
+        });
+    </script>
+
+</body>
+
+</html>
