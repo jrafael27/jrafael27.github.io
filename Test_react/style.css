@@ -33,6 +33,7 @@ body {
 }
 
 .action {
+  font-family: poppins;
   opacity: 0;
   margin-top: 20px;
   font-size: 2rem;
@@ -188,3 +189,4 @@ body {
   transform: scale(1.05, 1.05);
   transition: 0.4s ease;
 }
+
