@@ -16,6 +16,8 @@
 
     <div id="app" class="box"></div>
 
+    <div id="timer" class="box"></div>
+
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <!-- Babel Script -->
@@ -27,40 +29,89 @@
         const appRoot = ReactDOM.createRoot(appNode);
         const welcomeRoot = ReactDOM.createRoot(welcomeNode);
 
+        const timerNode = document.getElementById('timer');
+        const timerRoot = ReactDOM.createRoot(timerNode);
+
         function showAlert() {
             window.alert("Hello");
         }
 
+        function moveDiv() {
+            const div = document.getElementById('app');
+
+            const maxX = window.innerWidth - div.offsetWidth;
+            const maxY = window.innerHeight - div.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            div.style.left = randomX + 'px';
+            div.style.top = randomY + 'px';
+        }
+
+        function openCountDown() {
+            let timeLeft = 30 * 60; // 30 menit dalam detik
+
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+
+                const timerDiv = document.getElementById('timer');
+                timerDiv.style.opacity = 1;
+                const div = document.getElementById('app');
+                div.style.display = 'none';
+
+                timerRoot.render(
+                    <h2>
+                        {minutes}:{seconds.toString().padStart(2, '0')}
+                    </h2>
+                );
+
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    timerRoot.render(<h2>Time's Up! ⏰</h2>);
+                }
+
+                timeLeft--;
+            }, 1000);
+        }
+
         welcomeRoot.render(
             <>
-                <h1 className="hello_text">Hello</h1>
+                <h1 className="hello_text">Hello, Florencia</h1>
                 <h2 className="action">Click Anywhere to Continue</h2>
             </>
         );
 
         appRoot.render(
             <>
-                <h2>Welcome <br />Please Login</h2>
-                <div className="input_form">
+                <h2>Apakah Kamu Setuju untuk memijet Joshua selama 30 menit?</h2>
+
+                {/*<div className="input_form">
                     <label>Username</label>
                     <input type="text" className="input_box" />
                 </div>
                 <div className="input_form">
                     <label>Password</label>
                     <input type="password" className="input_box" />
-                </div>
-                <button className="btn" onClick={showAlert}>Login</button>
+                </div>*/}
+
+                <button className="btn" onClick={openCountDown}>Yesss Of Course</button>
+                <button className="btn" onMouseEnter={moveDiv}>Moh!!!</button>
             </>
         );
+
+        timerRoot.render(<h2>TEST TIMER</h2>);
+
+
 
         // fade-in welcome
         setTimeout(() => {
             welcomeNode.classList.add("fade-in");
         }, 50);
 
-        // 🔥 tampilkan teks setelah 5 detik
         setTimeout(() => {
-        const actionText = welcomeNode.querySelector(".action");
+            const actionText = welcomeNode.querySelector(".action");
 
             if (actionText) {
                 setTimeout(() => {
