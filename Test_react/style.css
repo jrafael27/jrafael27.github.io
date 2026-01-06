@@ -110,7 +110,25 @@ body {
   }
 }
 
+#timer {
+  position: fixed;
+  /* top: 20px;
+  right: 20px; */
+  margin: auto;
+  z-index: 9999;
+
+  background: black;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 24px;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .box {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,7 +141,7 @@ body {
   border: 1px solid black;
   border-radius: 20px;
   background-color: beige;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
   text-align: center;
 }
 
@@ -154,7 +172,7 @@ body {
   width: 90%;
   height: 30px;
   margin-top: 30px;
-  font-family: "Pacifico", cursive;
+  font-family: "Poppins", cursive;
   font-weight: 400;
   font-style: normal;
   background-color: #f1f1f1;
