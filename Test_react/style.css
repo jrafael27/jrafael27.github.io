@@ -175,7 +175,6 @@ body {
   margin-top: 30px;
   font-family: "Poppins", cursive;
   font-weight: 400;
-  font-size: 18px;
   font-style: normal;
   background-color: #f1f1f1;
   border-radius: 10px;
@@ -190,5 +189,6 @@ body {
   transform: scale(1.05, 1.05);
   transition: 0.4s ease;
 }
+
 
 
